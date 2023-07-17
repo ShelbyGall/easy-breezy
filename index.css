@@ -1,5 +1,15 @@
+.search-container {
+    display: flex;
+    flex-grow: 1;
+    max-width: 320px;
+}
 
+.search-container img {
+    max-width: 20px;
+    padding: 10px;
+}
 
-button {
-    background-color: aqua;
+.search-container input {
+    border-radius: 10px;
+    text-align: center;
 }
