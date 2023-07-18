@@ -1,15 +1,42 @@
 .search-container {
     display: flex;
-    flex-grow: 1;
-    max-width: 320px;
+    margin: auto;
+    max-width: 500px;
+    max-height: 600px;
 }
 
 .search-container img {
     max-width: 20px;
+    max-height: 20px;
     padding: 10px;
+    margin: 10px;
 }
 
 .search-container input {
-    border-radius: 10px;
+    max-height: 30px;
+    border-radius: 25px;
+
+    margin: 10px;
+    padding: 10px 15px;
     text-align: center;
 }
+
+.dropdown {
+    display: inline-flex;
+    position: relative;
+}
+
+.unit-container {
+    display: none;
+}
+
+.unit-selector {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.unit-list {
+    border-style: none;
+}
+
+.dropdown:hover .unit-container { display: block; }
