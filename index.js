@@ -31,7 +31,6 @@ async function getWeather(lat, lon, unit) {
 }
 
 buttonEl.addEventListener("click", function() {
-    console.log("button pushed")
     let lat = 34.686785
     let lon = -118.154163
     getWeather(lat, lon, unitSelected)
