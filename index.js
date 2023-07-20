@@ -8,6 +8,8 @@ const unitsList = document.getElementById("units-list")
 const unitSelEl = document.getElementById("unit-selector")
 const currTemp = document.getElementById("current-temp")
 const locationInput = document.getElementById("search-input")
+const weatherImg = document.getElementById("weather-img")
+const locationName = document.getElementById("location-name")
 
 document.getElementById("kelvin").addEventListener("click", function() {
     unitSelected = ""
@@ -27,27 +29,37 @@ document.getElementById("metric").addEventListener("click", function() {
 
 
 async function getWeather(lat, lon, unit) {
-    const response = await fetch(
-`
-https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}
-`)
-    const weather = await response.json()
-    const temp = Math.ceil(weather.main.temp)
-    currTemp.textContent = `${temp}° ${abbrevUnit}`
+    try {
+        const response = await fetch(
+        `
+        https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}
+        `)
+        const weather = await response.json()
+        const temp = Math.ceil(weather.main.temp)
+        currTemp.textContent = `${temp}°${abbrevUnit}\n`
+        if (weather) {
+            weatherImg.src = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`
+        }
+    } catch(error) {
+        console.error("An error occurred:", error);
+    }
 }
 
 async function getCoord(location) {
 
     const response = await fetch(
 `
-http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${apiKey}
+http://api.openweathermap.org/geo/1.0/direct?q=${location},&limit=10&appid=${apiKey}
 `)
 
     const result = await response.json()
+    console.log(result)
     let coordinates = {
         lat: result[0].lat,
         lon: result[0].lon
     }
+
+    locationName.textContent = `${result[0].name}, ${result[0].state}`
 
     return coordinates
 }
