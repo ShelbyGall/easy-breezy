@@ -3,9 +3,10 @@
 } */
 
 html {
-    background-color: #8EE3F5;
+    background: linear-gradient(to bottom right, #3E517A, #B08EA2);
+    background-attachment: fixed;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: gray;
+    color: lightgray;
 }
 
 .search-container {
@@ -19,13 +20,18 @@ html {
     max-width: 20px;
     max-height: 20px;
     padding: 10px;
+    margin: 5px;
     cursor: pointer;
+    background: whitesmoke;
+    border-radius: 20px;
 }
 
 .search-img:active {
     max-width: 18px;
     max-height: 18px;
 }
+
+.search-img:active .weather-tiles-container { display: block; }
 
 .search-input {
     flex-grow: 1;
@@ -45,34 +51,72 @@ html {
 
 .unit-container {
     display: none;
-    background-color: white;
+    background-color: whitesmoke;
     min-width: 160px;
     box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+.weather-tiles-dropdown {
+    z-index: 2;
+    display: inline-block;
+    position: absolute;
+    top: 45px;
+    margin: 2px;
+    padding: 2px;
+}
+
+.weather-tiles-container {
+    z-index: 2;
+    display: none; 
+    background-color: whitesmoke;
+    min-width: 160px;
+    border-radius: 10px;
 }
 
 .unit-selector {
     max-width: 20px;
     max-height: 20px;
-    padding: 10px 10px 0px 10px;
+    padding: 10px;
+    background: whitesmoke;
+    border-radius: 20px;
 }
 
 .dropdown:hover .unit-container { display: block; }
 
 .dropdown:hover .unit-selector { content: url("/assets/down.png");}
 
-p {
+.dropdown p {
     list-style-type: none;
     padding: 15px 20px;
     text-align: left;
     font-size: small;
+    border-radius: 10px;
 }
 
-p:hover {
+.dropdown p:hover {
     background-color: beige;
     cursor: pointer;
 }
 
-p:active {
+.dropdown p:active {
+    background-color: lightsteelblue;
+}
+
+.weather-tiles-dropdown p {
+    list-style-type: none;
+    padding: 15px 20px;
+    text-align: left;
+    font-size: small;
+    border-radius: 10px;
+}
+
+.weather-tiles-dropdown p:hover {
+    background-color: beige;
+    cursor: pointer;
+}
+
+.weather-tiles-dropdown p:active {
     background-color: lightsteelblue;
 }
 
@@ -94,6 +138,7 @@ h2 {
 }
 
 .weather-img {
+    z-index: 1;
     display: block;
     margin:  auto;
     position: relative;
@@ -104,7 +149,29 @@ h2 {
 
 .weather-container {
     display: block;
-    margin: auto;
+    margin: 30px auto;
     max-width: 250px;
     max-height: 250px;
+}
+
+.info-img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin:  auto;
+    z-index: 1;
+}
+
+.weather-info-container {
+    display: none;
+    margin: 8px;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    height: 30px;
+}
+
+.weather-info-container p {
+    font-size: 9px;
+    margin: auto;
+    
 }

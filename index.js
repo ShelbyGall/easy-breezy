@@ -11,6 +11,8 @@ const locationInput = document.getElementById("search-input")
 const weatherImg = document.getElementById("weather-img")
 const locationName = document.getElementById("location-name")
 const weatherResultList = document.getElementById("weather-tiles-result-list")
+const bodyEl = document.getElementById("body-el")
+const infoImg = document.getElementById("info-img")
 
 document.getElementById("kelvin").addEventListener("click", function() {
     unitSelected = ""
@@ -48,7 +50,10 @@ async function getWeather(coordinates) {
         currTemp.textContent = `${temp}°${abbrevUnit}\n`
         locationName.textContent = `${name}, ${state}`
         if (weather) {
-            weatherImg.src = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`
+            weatherImg.src = `assets/${weather.weather[0].icon}.png`
+            infoImg.src ="assets/info.png"
+            infoImg.title = `${weather.weather[0].description}`
+            document.getElementById("weather-info-container").style.display = "flex"
         }
     } catch(error) {
         console.error("An error occurred:", error);
@@ -65,30 +70,32 @@ http://api.openweathermap.org/geo/1.0/direct?q=${location},&limit=10&appid=${api
 `)
 
     const results = await response.json()
-    
+
     console.log(results)
     
     for(let currResult of results) {
 
-        let li = document.createElement("li")
-        li.textContent = `${currResult.name}, ${currResult.state} - Lat: ${currResult.lat} Lon: ${currResult.lon}`
-        li.data = {
+        let para = document.createElement("p")
+        para.textContent = `${currResult.name}, ${currResult.state} - Lat: ${currResult.lat} Lon: ${currResult.lon}`
+        para.data = {
             name: currResult.name,
             state: currResult.state,
             lat: currResult.lat,
             lon: currResult.lon
         }
 
-        weatherResultList.appendChild(li)
+        weatherResultList.appendChild(para)
 
-        li.addEventListener("click", function() {
-            getWeather(li.data)
+        para.addEventListener("click", function() {
+            getWeather(para.data)
+            document.getElementById("weather-tiles-container").style.display = "none"
         })
     }
 }
 
 
 buttonEl.addEventListener("click", async function() {
+    document.getElementById("weather-tiles-container").style.display = "block"
     weatherResultList.innerHTML = ""
     try {
         await getCoord(locationInput.value);
@@ -96,4 +103,5 @@ buttonEl.addEventListener("click", async function() {
         console.error("An error occurred:", error);
     }
 });
+
 
