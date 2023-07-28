@@ -37,6 +37,7 @@ async function getWeather(coordinates) {
     let lon = coordinates.lon
     let name = coordinates.name
     let state = coordinates.state
+    let country = coordinates.country
     try {
         const response = await fetch(
         `
@@ -48,12 +49,25 @@ async function getWeather(coordinates) {
 
         const temp = Math.ceil(weather.main.temp)
         currTemp.textContent = `${temp}°${abbrevUnit}\n`
-        locationName.textContent = `${name}, ${state}`
+        if (state === undefined) {
+            locationName.textContent = `${name}, ${country}`
+        } else {
+            locationName.textContent = `${name}, ${state}`
+        }
         if (weather) {
             weatherImg.src = `assets/${weather.weather[0].icon}.png`
             infoImg.src ="assets/info.png"
             infoImg.title = `${weather.weather[0].description}`
             document.getElementById("weather-info-container").style.display = "flex"
+            if (weather.weather[0].icon[2] == "n") {
+                document.documentElement.style.background = "linear-gradient(to bottom right, #3E517A, #B08EA2)"
+                document.documentElement.style.backgroundAttachment = "fixed"
+                console.log("night")
+            } else {
+                document.documentElement.style.background = "linear-gradient(to bottom right, #A8E0FF, #FFE9A8)"
+                document.documentElement.style.backgroundAttachment = "fixed"
+                console.log("day")
+            }
         }
     } catch(error) {
         console.error("An error occurred:", error);
@@ -76,10 +90,15 @@ http://api.openweathermap.org/geo/1.0/direct?q=${location},&limit=10&appid=${api
     for(let currResult of results) {
 
         let para = document.createElement("p")
-        para.textContent = `${currResult.name}, ${currResult.state} - Lat: ${currResult.lat} Lon: ${currResult.lon}`
-        para.data = {
+        if (currResult.state === undefined) {
+            para.textContent = `${currResult.name}, ${currResult.country} - Lat: ${currResult.lat} Lon: ${currResult.lon}`
+        } else {
+            para.textContent = `${currResult.name}, ${currResult.state} - Lat: ${currResult.lat} Lon: ${currResult.lon}`
+        }
+            para.data = {
             name: currResult.name,
             state: currResult.state,
+            country: currResult.country,
             lat: currResult.lat,
             lon: currResult.lon
         }

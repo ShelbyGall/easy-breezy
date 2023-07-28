@@ -3,7 +3,7 @@
 } */
 
 html {
-    background: linear-gradient(to bottom right, #3E517A, #B08EA2);
+    background: linear-gradient(to bottom right, lightgray, whitesmoke);
     background-attachment: fixed;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: lightgray;
@@ -164,7 +164,7 @@ h2 {
 
 .weather-info-container {
     display: none;
-    margin: 8px;
+    margin: 2px;
     background-color: whitesmoke;
     border-radius: 8px;
     height: 30px;
@@ -173,5 +173,4 @@ h2 {
 .weather-info-container p {
     font-size: 9px;
     margin: auto;
-    
 }
