@@ -6,7 +6,9 @@ html {
     background: linear-gradient(to bottom right, lightgray, whitesmoke);
     background-attachment: fixed;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: lightgray;
+    color: black;
+    max-width: 120%;
+    max-height: 150%;
 }
 
 .search-container {
@@ -22,7 +24,7 @@ html {
     padding: 10px;
     margin: 5px;
     cursor: pointer;
-    background: whitesmoke;
+    background: white;
     border-radius: 20px;
 }
 
@@ -47,11 +49,12 @@ html {
     position: absolute;
     margin: 2px;
     padding: 2px;
+    z-index: 3;
 }
 
 .unit-container {
     display: none;
-    background-color: whitesmoke;
+    background-color: white;
     min-width: 160px;
     box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
     border-radius: 10px;
@@ -69,7 +72,7 @@ html {
 .weather-tiles-container {
     z-index: 2;
     display: none; 
-    background-color: whitesmoke;
+    background-color: white;
     min-width: 160px;
     border-radius: 10px;
 }
@@ -78,7 +81,7 @@ html {
     max-width: 20px;
     max-height: 20px;
     padding: 10px;
-    background: whitesmoke;
+    background: white;
     border-radius: 20px;
 }
 
@@ -165,12 +168,51 @@ h2 {
 .weather-info-container {
     display: none;
     margin: 2px;
-    background-color: whitesmoke;
-    border-radius: 8px;
     height: 30px;
 }
 
 .weather-info-container p {
     font-size: 9px;
     margin: auto;
+}
+
+.bottom-page {
+    display: none;
+    margin: auto;
+    max-width: 300px;
+    max-height: 100px;
+    color: white;
+}
+
+.bottom-page div {
+    margin: 10px auto;
+    margin-bottom: -37px;
+}
+
+.bottom-page div div {
+    display: flex;
+}
+
+.bottom-page div div img {
+    max-width: 20px;
+    max-height: 20px;
+    padding: 17px 0px 0px 0px;
+}
+
+result {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+footer {
+    display: flex;
+    position: absolute;
+         top: 99%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 8px;
+    color: white;
 }

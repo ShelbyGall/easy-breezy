@@ -13,6 +13,8 @@ const locationName = document.getElementById("location-name")
 const weatherResultList = document.getElementById("weather-tiles-result-list")
 const bodyEl = document.getElementById("body-el")
 const infoImg = document.getElementById("info-img")
+const windSpeed = document.getElementById("wind-speed")
+const humidity = document.getElementById("Humidity")
 
 document.getElementById("kelvin").addEventListener("click", function() {
     unitSelected = ""
@@ -66,19 +68,29 @@ async function getWeather(coordinates) {
         }
         if (weather) {
             weatherImg.src = `assets/${weather.weather[0].icon}.png`
-            infoImg.src ="assets/info.png"
-            infoImg.title = `${weather.weather[0].description}`
-            document.getElementById("weather-info-container").style.display = "flex"
+
+            weatherImg.title = `Weather Type: ${weather.weather[0].description} \nMax Temp: ${weather.main.temp_max}°${abbrevUnit} \nMin Temp: ${weather.main.temp_min}°${abbrevUnit}`
             if (weather.weather[0].icon[2] == "n") {
                 document.documentElement.style.background = "linear-gradient(to bottom right, #3E517A, #B08EA2)"
                 document.documentElement.style.backgroundAttachment = "fixed"
-                console.log("night")
+                
             } else {
                 document.documentElement.style.background = "linear-gradient(to bottom right, #A8E0FF, #FFE9A8)"
                 document.documentElement.style.backgroundAttachment = "fixed"
-                console.log("day")
+                
+            }
+
+            document.getElementById("bottom-page").style.display = "flex"
+            humidity.textContent = `${weather.main.humidity} %`
+
+            if(abbrevUnit === "F") {
+                windSpeed.textContent = `${Math.ceil(weather.wind.speed)} mph`
+            } else {
+                windSpeed.textContent = `${Math.ceil(weather.wind.speed)} kph`
             }
         }
+        //alert("hover over weather icon for more information!")
+        
     } catch(error) {
         console.error("An error occurred:", error);
     }

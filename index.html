@@ -10,7 +10,6 @@
         <title>Easy Breezy</title>
         <body id="body-el">
 
-
             <div class="dropdown">
                 <img alt="" src="assets/up.png" class="unit-selector">
                 <div class="unit-container">
@@ -37,22 +36,47 @@
                 <img alt="" src="assets/search.png" id="search-button" class="search-img">
             </div>
 
+            <result>
+                <div class="weather-container">
+                    <img alt="" src="assets/invis.png" id="weather-img" class="weather-img">
 
-            <div class="weather-container">
-                <img alt="" src="assets/invis.png" id="weather-img" class="weather-img">
-
-                <div class="weather-info-container" id="weather-info-container">
-                    <img alt="assets/invis.png" src="assets/invis.png" id="info-img" class="info-img" title="">
-                    <p>hover over icon for weather description</p>
+                    <h1 id="current-temp"></h1>
+                    <h2 id="location-name"></h2>
                 </div>
 
-                <h1 id="current-temp"></h1>
-                <h2 id="location-name"></h2>
-            </div>
+                <div id="bottom-page" class="bottom-page">
+
+                    <div class="Humidity-div">
+                        <div>
+                            <img src="assets/humid.png" alt="">
+                            <h3 id="Humidity"></h3>
+                        </div>
+                        <h5>Humidity</h5>
+                    </div>
+                    
+                    <div class="wind-div">
+                        <div>
+                            <img src="assets/wind.png" alt="">
+                            <h3 id="wind-speed"></h3>
+                        </div>
+                        <h5>Wind Speed</h5>
+                    </div>
+
+                </div>
+            </result>
+
 
         </body>
     </head>
+    
+    <br>
 
+    <footer>
+        <br>
+        <p>Shelby Gallegos 2023 &copy || </p>
+        <p><a href="mailto:sjgallegos270@gmail.com">sjgallegos270@gmail.com</a></p>
+    </footer>
+    
     <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
 </html>
