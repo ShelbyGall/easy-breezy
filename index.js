@@ -90,7 +90,7 @@ async function getWeather(coordinates) {
             }
         }
         //alert("hover over weather icon for more information!")
-        
+
     } catch(error) {
         console.error("An error occurred:", error);
     }
@@ -102,7 +102,7 @@ async function getCoord(location) {
 
     const response = await fetch(
 `
-http://api.openweathermap.org/geo/1.0/direct?q=${location},&limit=10&appid=${apiKey}
+https://api.openweathermap.org/geo/1.0/direct?q=${location},&limit=10&appid=${apiKey}
 `)
 
     const results = await response.json()
