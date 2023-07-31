@@ -30,6 +30,16 @@ document.getElementById("metric").addEventListener("click", function() {
 })
 
 
+buttonEl.addEventListener("click", async function() {
+    document.getElementById("weather-tiles-container").style.display = "block"
+    weatherResultList.innerHTML = ""
+    try {
+        await getCoord(locationInput.value);
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
+});
+
 
 async function getWeather(coordinates) {
 
@@ -113,14 +123,5 @@ http://api.openweathermap.org/geo/1.0/direct?q=${location},&limit=10&appid=${api
 }
 
 
-buttonEl.addEventListener("click", async function() {
-    document.getElementById("weather-tiles-container").style.display = "block"
-    weatherResultList.innerHTML = ""
-    try {
-        await getCoord(locationInput.value);
-    } catch (error) {
-        console.error("An error occurred:", error);
-    }
-});
 
 
