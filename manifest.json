@@ -1,9 +1,0 @@
-{
-    "manifest_version": 3,
-    "version": "1.0",
-    "name": "Easy Breezy",
-    "action": {
-        "default_popup": "index.html",
-        "default_icon": "apple-touch-icon.png"
-    }
-}
